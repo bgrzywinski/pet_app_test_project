@@ -1,0 +1,359 @@
+#root {
+    text-align: center;
+    font-family: 'Sigmar One', cursive;
+    box-sizing: border-box;
+}
+
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #A7D31F;
+    display: flex;
+    justify-content: center;
+    box-shadow: 0 5px 8px #00000029;
+
+
+    .dog-head {
+        z-index: 100;
+        -webkit-animation: head-move 1s ease-in-out infinite;
+        padding: 10px;
+    }
+
+    @-webkit-keyframes head-move {
+        50% {
+            -webkit-transform: rotate(-6.5deg);
+        }
+    }
+
+
+    .title_class {
+        font-size: 20px;
+        background-color: #55efc4;
+        background-image: linear-gradient(315deg, #55efc4 0%, #000000 74%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        letter-spacing: 3px;
+        padding: 8px;
+    }
+
+
+    nav {
+        width: 90%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .nav_elements {
+            width: 30%;
+            display: flex;
+            justify-content: space-evenly;
+
+            .btn_nav {
+                font-size: 0.85em;
+            }
+        }
+    }
+}
+
+
+.btn {
+    border-radius: 16px;
+    border: 1px solid transparent;
+    padding: 7px 9px;
+    font-size: 0.9em;
+    font-family: inherit;
+    cursor: pointer;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
+
+    a {
+        color: #213547;
+
+        &:hover {
+        color: rgb(0, 195, 138);
+        }
+    }
+
+    &:hover {
+        box-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
+    }
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 150px;
+
+
+    .main_card {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        align-items: center;
+        width: 35%;
+
+
+        .form_footer {
+            padding-top: 30px;
+            font-size: 15px;
+        }
+    }
+
+
+    .btn_log {
+        background-color: rgb(0, 195, 138);
+    }
+
+    .btn_aut {
+        box-shadow: 0 1px 4px rgb(0, 195, 138);
+        background: #ffffff;
+        font-family: 'Roboto', sans-serif;
+        font-size: 18px;
+        padding: 11px;
+        width: 100%;
+
+        &:hover {
+            box-shadow: rgba(0, 0, 0, 5) 0 1px 3px;
+        }
+    }
+
+
+
+    input, #service {
+
+        padding: 10px;
+        margin-bottom: 15px;
+        font-size: 15px;
+        border: 1px solid rgb(0, 195, 138);;
+        box-shadow: 0 1px 4px rgb(0, 195, 138);
+        outline: none;
+        border-radius: 8px;
+
+        &::placeholder {
+            font-size: 15px;
+            color: #B2B2B2;
+        }
+    }
+
+
+    .form_container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    .password_forgot_q {
+        font-size: 11px;
+        opacity: 0.7;
+        cursor: pointer;
+        width: 100%;
+        text-align: right;
+        margin-top: -10px;
+
+
+        &:hover {
+            transform: scale(1.020);
+            transition: 0.2s;
+        }
+    }
+
+    .form_footer {
+        width: 100%;
+
+        .btn_sign {
+            font-family: 'Sigmar One', cursive;
+            font-size: 13px;
+            margin-top: 20px;
+        }
+    }
+}
+
+footer {
+    background-color: #A7D31F;
+    box-shadow: 0 -2px 8px 2px rgba(0, 0, 0, 0.2);
+}
+
+.footer_container {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+
+
+    .footer_nav {
+        list-style-type: none;
+        margin-left: 60px;
+        padding: 15px;
+
+
+        li {
+            color: #2F4F4F;
+            cursor: pointer;
+            font-family: 'Libre Baskerville', serif;
+        }
+    }
+
+    .left_footer_container {
+        display: flex;
+    }
+
+    .right__footer_container {
+        padding: 15px;
+    }
+
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.first_main_card {
+    height: 90%;
+    width: 100%;
+    background-image: url("./assets/dog&man background.jpg");
+    background-size: cover;
+    padding-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+
+
+    .searching_bar {
+        width: 40%;
+        height: 40%;
+        background: #2F4F4F;
+        opacity: 0.7;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 15px;
+
+
+        .searching_form {
+
+        }
+    }
+}
+
+.second_main_card_part1 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 100px 0;
+
+    .second_main_columns {
+        width: 25%;
+        padding: 15px;
+        border: 2px solid #55dfb4;
+        border-radius: 20px;
+        transition: 0.5s;
+        margin: 0;
+
+        &:hover {
+            box-shadow: 2px 2px 25px #55dfb4;
+            transform: scale(1.1);
+        }
+    }
+}
+
+.second_main_card_part2 {
+    width: 100%;
+    padding: 100px 0;
+    display: flex;
+
+    .img_container {
+        width: 750px;
+        height: 495px;
+        border-radius: 0 25px 25px 0;
+        background-image: url("./assets/dog&women.jpg");
+        background-position: left;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+
+    .primary_check_container {
+        width: 40%;
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+        font-family: 'Roboto', sans-serif;
+        list-style-type: disc;
+
+        li {
+            padding-left: 2px;
+        }
+    }
+}
+
+.second_main_card_part3 {
+    padding: 100px 0;
+    width: 90%;
+    display: flex;
+    justify-content: space-around;
+
+    .service {
+
+        .service_wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+
+            .service_icon1 {
+                background-image: url("./assets/direction-icon-original.svg");
+                background-size: contain;
+                width: 64px;
+                height: 64px;
+            }
+
+            .service_icon2 {
+                background-image: url("./assets/approved-icon-original.svg");
+                background-size: contain;
+                width: 64px;
+                height: 64px;
+            }
+
+            .service_icon3 {
+                background-image: url("./assets/PngItem_5099394.png");
+                background-size: contain;
+                width: 64px;
+                height: 64px;
+            }
+        }
+    }
+}
+
+.second_main_card_part4 {
+    padding: 80px 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    .secondary_check_container {
+        width: 40%;
+        text-align: right;
+        font-family: 'Roboto', sans-serif;
+        list-style-type: none;
+
+        li {
+            margin-top: 40px;
+        }
+    }
+
+    .second_img_container {
+        width: 750px;
+        height: 495px;
+        background-image: url("./assets/dogs.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-radius: 25px 0 0 25px;
+    }
+}
