@@ -22,7 +22,7 @@ function SignIn() {
         });
 
         if (!error) {
-            navigation('/');
+            navigation('/loggedin');
             return;
         }
 
