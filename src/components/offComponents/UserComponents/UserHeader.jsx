@@ -1,10 +1,6 @@
 import {Link} from "react-router-dom";
-import PropTypes from "prop-types";
-function LoggedInHeader({handleLogout}) {
 
-    LoggedInHeader.propTypes = {
-        handleLogout: PropTypes.func.isRequired,
-    };
+function UserHeader() {
 
     return (
         <header style={{
@@ -21,11 +17,11 @@ function LoggedInHeader({handleLogout}) {
                     <h1 className='title_class'><Link to='/'>ZWIERZ OGRÓD</Link></h1>
                 </div>
                 <div className='nav_elements'>
-                    <button className='btn btn_nav'><Link to='/loggedin'>Profil</Link></button>
-                    <button onClick={handleLogout}>Wyloguj</button>
+                    <button className='btn btn_nav'><Link to='/user'>Profil</Link></button>
+                    <button className='btn btn_nav'><Link to="/signin">Wyloguj</Link></button>
                 </div>
             </nav>
         </header>
     )
 }
-export default LoggedInHeader;
+export default UserHeader;

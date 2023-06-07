@@ -5,6 +5,7 @@ import SignInMain from "./offComponents/SIgnInComponents/SignInMain.jsx";
 import Footer from "./offComponents/Footer.jsx";
 import supabase from "../services/supabase.js";
 
+
 function SignIn() {
 
     const navigation = useNavigate();
@@ -22,7 +23,7 @@ function SignIn() {
         });
 
         if (!error) {
-            navigation('/loggedin');
+            navigation('/user');
             return;
         }
 

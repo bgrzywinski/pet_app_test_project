@@ -30,9 +30,13 @@ body {
   overflow: auto;
 }
 
+h1, h2, h3, h4 {
+  line-height: 1.1;
+  font-family: var(--primary-font-family);
+}
+
 h1 {
   font-size: 3.2em;
-  line-height: 1.1;
 }
 
 
@@ -44,8 +48,5 @@ h1 {
   }
   a:hover {
     color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
   }
 }

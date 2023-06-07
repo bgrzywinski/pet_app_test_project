@@ -1,12 +1,19 @@
 import { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import PropTypes from "prop-types";
 
-function SearchingBar() {
+function SearchingBar({onSearch}) {
+
+    SearchingBar.propTypes = {
+        onSearch: PropTypes.func.isRequired,
+    };
+
     const [selectedDate, setSelectedDate] = useState(null);
     const [selectedCity, setSelectedCity] = useState('');
     const [selectedAnimal, setSelectedAnimal] = useState('');
     const [selectedSize, setSelectedSize] = useState('');
+
 
     const handleCityChange = (e) => {
         setSelectedCity(e.target.value);
@@ -22,14 +29,20 @@ function SearchingBar() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Dodaj logikę obsługi wyszukiwania
+        const searchData = {
+            animal: selectedAnimal,
+            size: selectedSize,
+            city: selectedCity,
+            date: selectedDate,
+        };
+        onSearch(searchData);
     };
 
     return (
         <>
             <div className='searching_bar'>
                 <form className='searching_form' onSubmit={handleSubmit}>
-                    <label>Poszukuje spaceru dla:</label>
+                    <label style={{fontSize: '18px'}}>Spacer dla:</label>
                     <div className='button_form_container'>
                         <button
                             className={`btn animal_button ${selectedAnimal === 'dog' ? 'selected' : ''}`}
@@ -48,11 +61,11 @@ function SearchingBar() {
                             Kota
                         </button>
                     </div>
-                    <label>Termin:</label>
-                    <DatePicker selected={selectedDate} onChange={(date) => setSelectedDate(date)} dateFormat='dd/MM/yyyy' />
+                    <label style={{fontSize: '18px'}}>Termin:</label>
+                    <DatePicker selected={selectedDate} className='custom-datepicker' onChange={(date) => setSelectedDate(date)} dateFormat='dd/MM/yyyy' />
                 </form>
                 <form className='searching_form' onSubmit={handleSubmit}>
-                    <label>Rozmiar:</label>
+                    <label style={{fontSize: '18px'}}>Rozmiar:</label>
                     <div className='button_form_container'>
                         <button
                             className={`btn animal_button ${selectedSize === 'small' ? 'selected' : ''}`}
@@ -60,7 +73,7 @@ function SearchingBar() {
                             value='small'
                             onClick={handleSizeChange}
                         >
-                            do 5kg
+                            do 10kg
                         </button>
                         <button
                             className={`btn animal_button ${selectedSize === 'medium' ? 'selected' : ''}`}
@@ -84,10 +97,10 @@ function SearchingBar() {
                             value='xlarge'
                             onClick={handleSizeChange}
                         >
-                            40kg
+                            do 40kg
                         </button>
                     </div>
-                    <label>Miasto:</label>
+                    <label style={{fontSize: '18px'}}>Miasto:</label>
                     <select value={selectedCity} onChange={handleCityChange}>
                         <option value=''>...</option>
                         <option value='miasto1'>Warszawa</option>

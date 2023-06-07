@@ -11,8 +11,8 @@ function SignInUp(props) {
 
     return (
         <main>
-            <h1>Zarejestruj się</h1>
             <div className='main_card'>
+                <h1>Zarejestruj się</h1>
                 <h2>Za darmo!</h2>
                 <button className='btn btn_aut'>Kontynuuj z Facebook</button>
                 <button className='btn btn_aut'>Kontynuuj z Google</button>
@@ -20,9 +20,9 @@ function SignInUp(props) {
                 <p>Lub</p>
                 <div className='form_container'>
                     <form onSubmit={handleSignUp}>
-                        <input name='email' id="email" placeholder="Podaj swój adres email" />
-                        <input id="password" type="password" placeholder="Podaj hasło" />
-                        <input id="password_repeat" type="password" placeholder="Potwierdź hasło" />
+                        <input className='sign_input' name='email' id="email" placeholder="Podaj swój adres email" />
+                        <input className='sign_input' id="password" type="password" placeholder="Podaj hasło" />
+                        <input className='sign_input' id="password_repeat" type="password" placeholder="Potwierdź hasło" />
                         <button className='btn btn_log'>Zarejestruj się</button>
                     </form>
                 </div>

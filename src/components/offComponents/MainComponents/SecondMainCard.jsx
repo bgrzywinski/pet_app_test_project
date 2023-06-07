@@ -1,11 +1,15 @@
-import {Link} from "react-router-dom";
+
+import { animateScroll as scroll } from 'react-scroll'
 
 
 function SecondMainCard() {
+
+    const handleButtonClick = () => {
+        scroll.scrollToTop();
+    };
+
     return (
-        <main style={{
-            padding: '80px 0'
-        }}>
+        <main>
             <h1>Oto jak działamy</h1>
             <h3>Wyszukaj i nawiąż kontakt z zaufanymi opiekunami !</h3>
             <div className='second_main_card_part1'>
@@ -25,19 +29,14 @@ function SecondMainCard() {
             <div className='second_main_card_part2'>
                 <div className='img_container'></div>
                 <ul className='primary_check_container'>
-                    <h2 style={{
-                        fontFamily: 'Sigmar One, cursive',
-                        marginBottom: '30px',
-                    }}>Dlaczego warto nam zaufać ?</h2>
+                    <h2>Dlaczego warto nam zaufać ?</h2>
                 <li>Dokładnie sprawdzamy każdego zarejestrowanego opiekuna (dowód tożsamości, social media, wywiad).</li>
                 <li>Na specjalną prośbę przygotowywujemy umowę, którą opiekun podpisuje przed rozpoczęciem świadczenia wybranej usługi.</li>
                 <li>Organizujemy wykłady i szkolenia dotyczące szerokopojętego petsittingu.</li>
                 <li>Tworzymy naszą społeczność z pasji i przyjaźni z naszymi czworonogami i nie tylko!</li>
                 </ul>
             </div>
-            <h3 style={{
-                marginTop: '80px',
-            }} className='service_title'>Przyjacielskie podejście, żadnych klatek</h3>
+            <h2 className='service_title'>Przyjacielskie podejście, żadnych klatek</h2>
             <div className='second_main_card_part3'>
                 <div className='service'>
                 <div className='service_wrap'>
@@ -60,30 +59,16 @@ function SecondMainCard() {
             </div>
             <div className='second_main_card_part4'>
                 <ul className='secondary_check_container'>
-                    <h2 style={{
-                        fontFamily: 'Sigmar One, cursive',
-                    }}>W jakich sytuacjach możesz na nas liczyć ?</h2>
+                    <h2>W jakich sytuacjach możesz na nas liczyć ?</h2>
                     <li>Wyjeżdzasz na wakacje ?</li>
                     <li>Intensywnie pracujesz i nie chcesz a by Twój pupil przez to cierpiał ?</li>
                     <li>Nie masz z kim zostawić swojego zwierzaka ?</li>
                     <li>Nie masz kogo poprosić o pomoc i opiekę ?</li>
                     <li>Chcesz spróbować nowych rozwiązań i sposobów opieki ?</li>
-                    <button style={{
-                        borderRadius: '16px',
-                        border: '1px solid transparent',
-                        padding: '7px 9px',
-                        fontSize: '0.9em',
-                        fontFamily: 'Sigmar One, cursive',
-                        cursor: 'pointer',
-                        boxShadow: '0 2px 2px rgba(0, 0, 0, 0.5)',
-                        marginTop: '50px',
-                    }}><Link to='/' style={{
-                        color: '#213547',
-                    }}>Znajdź opiekuna</Link></button>
+                    <button className='btn btn_sub btn_count' onClick={handleButtonClick}>Znajdź opiekuna</button>
                 </ul>
                 <div className='second_img_container'></div>
             </div>
-
         </main>
     )
 }
