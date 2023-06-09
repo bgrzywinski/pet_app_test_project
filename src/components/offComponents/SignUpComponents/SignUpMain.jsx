@@ -1,13 +1,18 @@
 import {Link} from "react-router-dom";
-import PropTypes from 'prop-types';
+import {animateScroll as scroll} from "react-scroll";
+import PropTypes from "prop-types";
 
-function SignInUp(props) {
+function SignUpMain({handleSignUp}) {
 
-    const { handleSignUp } = props;
-    SignInUp.propTypes = {
-        handleSignUp: PropTypes.func,
-
+    SignUpMain.propTypes = {
+        handleSignUp: PropTypes.func.isRequired,
     };
+
+
+    const handleButtonClick = () => {
+        scroll.scrollToTop();
+    };
+
 
     return (
         <main>
@@ -16,7 +21,7 @@ function SignInUp(props) {
                 <h2>Za darmo!</h2>
                 <button className='btn btn_aut'>Kontynuuj z Facebook</button>
                 <button className='btn btn_aut'>Kontynuuj z Google</button>
-                <button className='btn btn_aut'>Kontynuuj z Apple</button>
+                <button className='btn btn_aut'>Kontynuuj z Github</button>
                 <p>Lub</p>
                 <div className='form_container'>
                     <form onSubmit={handleSignUp}>
@@ -29,11 +34,11 @@ function SignInUp(props) {
                 <div className='form_footer'>
                     <h2>Posiadasz już konto ?</h2>
                     <h3>Na co czekasz ?</h3>
-                    <button className='btn btn_aut btn_sign'><Link to="/signin">Zaloguj się</Link></button>
+                    <button className='btn btn_aut btn_sign'><Link to="/signin" onClick={handleButtonClick}>Zaloguj się</Link></button>
                 </div>
             </div>
         </main>
     )
 }
 
-export default SignInUp;
+export default SignUpMain;

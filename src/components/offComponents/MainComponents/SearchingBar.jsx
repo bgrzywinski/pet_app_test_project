@@ -3,13 +3,14 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import PropTypes from "prop-types";
 
+
 function SearchingBar({onSearch}) {
 
     SearchingBar.propTypes = {
         onSearch: PropTypes.func.isRequired,
     };
 
-    const [selectedDate, setSelectedDate] = useState(null);
+    const [selectedDateOfWalk, setSelectedDateOfWalk] = useState(null);
     const [selectedCity, setSelectedCity] = useState('');
     const [selectedAnimal, setSelectedAnimal] = useState('');
     const [selectedSize, setSelectedSize] = useState('');
@@ -33,7 +34,7 @@ function SearchingBar({onSearch}) {
             animal: selectedAnimal,
             size: selectedSize,
             city: selectedCity,
-            date: selectedDate,
+            dateOfWalk: selectedDateOfWalk,
         };
         onSearch(searchData);
     };
@@ -62,7 +63,7 @@ function SearchingBar({onSearch}) {
                         </button>
                     </div>
                     <label style={{fontSize: '18px'}}>Termin:</label>
-                    <DatePicker selected={selectedDate} className='custom-datepicker' onChange={(date) => setSelectedDate(date)} dateFormat='dd/MM/yyyy' />
+                    <DatePicker selected={selectedDateOfWalk} className='custom-datepicker' onChange={(dateOfWalk) => setSelectedDateOfWalk(dateOfWalk)} dateFormat='dd/MM/yyyy' />
                 </form>
                 <form className='searching_form' onSubmit={handleSubmit}>
                     <label style={{fontSize: '18px'}}>Rozmiar:</label>
@@ -110,7 +111,7 @@ function SearchingBar({onSearch}) {
                         <option value='miasto3'>Poznań</option>
                     </select>
                     <div className='submit_button_container'>
-                        <button className='btn btn_log btn_sub' type='submit'>
+                        <button className='btn btn_log btn_sub' type='submit' onClick={handleSubmit}>
                             Wyszukaj
                         </button>
                     </div>

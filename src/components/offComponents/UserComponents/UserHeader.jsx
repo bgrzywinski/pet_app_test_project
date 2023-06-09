@@ -14,7 +14,7 @@ function UserHeader() {
             </div>
             <nav>
                 <div>
-                    <h1 className='title_class'><Link to='/'>ZWIERZ OGRÓD</Link></h1>
+                    <h1 className='title_class'><Link to='/'>PETS GARDEN</Link></h1>
                 </div>
                 <div className='nav_elements'>
                     <button className='btn btn_nav'><Link to='/user'>Profil</Link></button>

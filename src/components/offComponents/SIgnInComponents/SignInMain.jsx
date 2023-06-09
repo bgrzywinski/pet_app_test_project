@@ -1,7 +1,12 @@
 import {Link} from "react-router-dom";
 import PropTypes from 'prop-types';
+import {animateScroll as scroll} from "react-scroll";
 
 function SignInMain(props) {
+
+    const handleButtonClick = () => {
+        scroll.scrollToTop();
+    };
 
     const { handleSignIn, authError } = props;
     SignInMain.propTypes = {
@@ -16,7 +21,7 @@ function SignInMain(props) {
                 <h2>Zaloguj się</h2>
                 <button className='btn btn_aut'>Kontynuuj z Facebook</button>
                 <button className='btn btn_aut'>Kontynuuj z Google</button>
-                <button className='btn btn_aut'>Kontynuuj z Apple</button>
+                <button className='btn btn_aut'>Kontynuuj z Github</button>
                 <p>Lub</p>
                 <div className='form_container'>
                     {
@@ -32,7 +37,7 @@ function SignInMain(props) {
                 <div className='form_footer'>
                     <h2>Jeszcze się nie zarejestrowałeś ?</h2>
                     <h3>Na co czekasz ?</h3>
-                    <button className='btn btn_aut btn_sign'><Link to="/signup">Zarejestruj się</Link></button>
+                    <button className='btn btn_aut btn_sign'><Link to="/signup" onClick={handleButtonClick}>Zarejestruj się</Link></button>
                 </div>
             </div>
         </main>

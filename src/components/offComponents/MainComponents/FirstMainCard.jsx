@@ -1,49 +1,71 @@
-
+import supabase from "../../../services/supabase.js";
+import ProfileList from './ProfileList';
 import SearchingBar from './SearchingBar';
-import { useState } from "react";
-import ProfileList from "./ProfileList.jsx";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 
-function FirstMainCard() {
+const FirstMainCard = () => {
+    const navigate = useNavigate();
 
-    const [searchResults, setSearchResults] = useState([]);
+    const [profiles, setProfiles] = useState([]);
+    const [filteredProfiles, setFilteredProfiles] = useState([]);
 
-    const profiles = [
-        { id: 1, name: 'Profile 1', animal: 'dog', size: 'small', city: 'Warsaw', date: '2023-06-01' },
-        { id: 2, name: 'Profile 2', animal: 'cat', size: 'medium', city: 'Gdańsk', date: '2023-06-02' },
-        { id: 3, name: 'Profile 3', animal: 'dog', size: 'large', city: 'Kraków', date: '2023-06-03' },
-        { id: 4, name: 'Profile 4', animal: 'cat', size: 'small', city: 'Warsaw', date: '2023-06-04' },
-    ];
+    useEffect(() => {
+        (async () => {
+            try {
+                await fetchProfiles();
+            } catch (error) {
+                console.log(error);
+            }
+        })();
+    }, []);
 
-    const handleSearch = (searchCriteria) => {
 
-        const { animal, size, city, date } = searchCriteria;
-
-        const filteredProfiles = profiles.filter((profile) => {
-            return (
-                profile.animal === animal &&
-                profile.size === size &&
-                profile.city === city &&
-                profile.date === date
-            );
-        })
-        setSearchResults(filteredProfiles)
+    const fetchProfiles = async () => {
+        try {
+            const { data, error } = await supabase.from('Profile').select('*');
+            if (error) {
+                console.error(error);
+            } else {
+                setProfiles(data);
+                setFilteredProfiles(data);
+            }
+        } catch (error) {
+            console.log(error);
+        }
     };
 
 
+    const handleSearch = (searchData) => {
+        const filtered = profiles.filter((profile) => {
+            return (
+                profile.animal === searchData.animal &&
+                profile.size === searchData.size &&
+                profile.city === searchData.city &&
+                profile.dateOfWalk === searchData.dateOfWalk
+            );
+        });
+        setFilteredProfiles(filtered);
+        navigate('/profiles');
+    };
 
     return (
         <main>
-            <div className='first_main_card'>
-                <h1 className='first_title'>Pets Garden</h1>
-                <h2 className='second_title'>Spacery dla zwierząt domowych<br />
+            <div className="first_main_card">
+                <h1 className="first_title">Pets Garden</h1>
+                <h2 className="second_title">
+                    Spacery dla zwierząt domowych<br />
                     Znajdź miejsce dla swojego pupila w naszym ogrodzie!
                 </h2>
-                <SearchingBar onSearch={handleSearch}/>
-                <ProfileList searchResults={searchResults}/>
+                <SearchingBar onSearch={handleSearch} />
+                <ProfileList profiles={filteredProfiles} />
             </div>
         </main>
-    )
-}
+    );
+};
 
 export default FirstMainCard;
+
+
+

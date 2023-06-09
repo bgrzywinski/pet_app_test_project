@@ -9,10 +9,11 @@ import Footer from "./offComponents/Footer.jsx";
 
 function Main() {
     let alreadyMounted = false;
-    const naviation = useNavigate();
+    const navigation = useNavigate();
 
     const [session, setSession] = useState(null);
     const [entries, setEntries] = useState(null);
+    const [isLoggedIn, setIsLoggedIn] = useState(false)
 
     useEffect(() => {
         if (!alreadyMounted) {
@@ -32,11 +33,12 @@ function Main() {
         const { data } = await supabase.auth.getSession();
 
         if (!data.session) {
-            naviation('/signin');
+            navigation('/signin');
             return;
         }
 
         setSession(data);
+        setIsLoggedIn(true);
     };
 
     const getEntries = async () => {
@@ -53,31 +55,21 @@ function Main() {
     };
 
 
-    const handleSaveText = async (e) => {
-        e.preventDefault();
-
-        const { text } = e.target.elements;
-
-        const { data, error } = await supabase
-            .from('entries')
-            .insert([{ entry: text.value, author: session.session.user.email }])
-            .select('*');
-
+    const handleLogout = async () => {
+        const { error } = await supabase.auth.signOut();
         if (!error) {
-            setEntries(prev => [...prev, data[0]]);
+            setIsLoggedIn(false);
+            navigation('/');
         }
     };
 
+
     return (
         <div>
-            <Header />
+            <Header isLoggedIn={isLoggedIn} onLogout={handleLogout} />
             <FirstMainCard/>
             <SecondMainCard/>
             <Footer/>
-            <form onSubmit={handleSaveText}>
-                <textarea id="text" placeholder="Wpisz tekst..."></textarea>
-                <button>Zapisz</button>
-            </form>
             {entries && (
                 <ul>
                     {entries.map(({ entry, id }) => (

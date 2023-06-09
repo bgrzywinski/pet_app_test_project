@@ -37,7 +37,7 @@ function SignUp() {
 
     return (
         <>
-            <Header />
+            <Header isLoggedIn={false}/>
             <SignUpMain handleSignUp={handleSignUp}/>
             <Footer/>
         </>

@@ -1,26 +1,29 @@
+import PropTypes from "prop-types";
 
-import PropTypes from 'prop-types';
-
-function ProfileList({ searchResults }) {
+function ProfileList({ profiles }) {
     return (
         <div>
-            <h2></h2>
-            {searchResults.map((profile) => (
-                <div key={profile.id}>
-                    <h3>{profile.name}</h3>
-                    <p>{profile.description}</p>
-                </div>
-            ))}
+            {Array.isArray(profiles) ? (
+                profiles.map((profile) => (
+                    <div key={profile.id}>
+                        {/* Wyświetlanie danych profili */}
+                        <p>{profile.name}</p>
+                        {/* ... */}
+                    </div>
+                ))
+            ) : (
+                <p>Brak profili do wyświetlenia.</p>
+            )}
         </div>
     );
 }
 
 ProfileList.propTypes = {
-    searchResults: PropTypes.arrayOf(
+    profiles: PropTypes.arrayOf(
         PropTypes.shape({
-            id: PropTypes.number.isRequired,
-            name: PropTypes.string.isRequired,
-            description: PropTypes.string.isRequired,
+            id: PropTypes.number,
+            name: PropTypes.string,
+            // Dodaj inne wymagane typy danych dla profili
         })
     ).isRequired,
 };
